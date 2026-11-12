@@ -54,7 +54,8 @@
     <body>
 
             {{ $slot }}
-
+            <footer class="text-center py-3"><a href="https://github.com/aziz0ffs/NFCBaku-Source" target="_blank" rel="noopener noreferrer">Mənbə kodu (AGPL-3.0)</a></footer>
+ 
     </body>
 
     <!-- Library Bundle Script -->
