@@ -20,9 +20,18 @@
 
     @push('linkstack-content')
         @foreach($information as $info)
+            @if($userinfo->littlelink_name === 'turab')
+                <section class="nfc-hero" aria-label="Turab profili">
+                    <div class="nfc-hero-top"><span class="nfc-status-dot" aria-hidden="true"></span>NFC BAKU <span class="nfc-hero-separator">/</span> RƏQƏMSAL PROFİL</div>
+            @endif
             @include('linkstack.elements.avatar')
             @include('linkstack.elements.heading')
             @include('linkstack.elements.bio')
+            @if($userinfo->littlelink_name === 'turab')
+                    <p class="nfc-hero-caption">Bir toxunuşla paylaş.</p>
+                    <div class="nfc-hero-line" aria-hidden="true"></div>
+                </section>
+            @endif
         @endforeach
         @include('linkstack.elements.icons')
         @include('linkstack.elements.buttons')

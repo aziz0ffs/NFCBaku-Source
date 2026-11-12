@@ -1,0 +1,144 @@
+/* NFC Baku / Turab profile. Scoped so other LinkStack profiles keep their themes. */
+body.nfc-turab-page {
+  min-height: 100vh;
+  min-height: 100svh;
+  background-color: #080c1c !important;
+  color: #f5f5ff;
+  font-family: Inter, 'Open Sans', sans-serif;
+}
+.nfc-turab-page::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 70% 55% at 15% 18%, rgba(95, 42, 177, .33), transparent 75%),
+    radial-gradient(ellipse 70% 55% at 88% 82%, rgba(16, 156, 183, .19), transparent 72%);
+}
+.nfc-turab-page > .container,
+.nfc-turab-page .sharediv { position: relative; z-index: 2; }
+.nfc-turab-page > .container { max-width: 760px; padding: 0 20px; }
+.nfc-turab-page > .container > .row > .column { margin-top: 2% !important; }
+.nfc-turab-page .nfc-hero {
+  position: relative;
+  isolation: isolate;
+  margin: clamp(75px, 12vh, 130px) auto 45px;
+  padding: 40px 32px 46px;
+  border: 1px solid rgba(193, 180, 255, .22);
+  border-radius: 32px;
+  background: linear-gradient(145deg, rgba(34, 37, 74, .85), rgba(13, 20, 39, .88));
+  box-shadow: 0 28px 85px rgba(0, 0, 0, .37), inset 0 1px rgba(255, 255, 255, .10);
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+  overflow: hidden;
+}
+.nfc-turab-page .nfc-hero::after {
+  content: '';
+  position: absolute;
+  width: 230px;
+  height: 230px;
+  right: -105px;
+  top: -110px;
+  border: 1px solid rgba(156, 130, 247, .28);
+  border-radius: 50%;
+  box-shadow: 0 0 0 42px rgba(151, 112, 247, .035), 0 0 0 84px rgba(151, 112, 247, .025);
+  pointer-events: none;
+}
+.nfc-turab-page .nfc-hero-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 100%;
+  color: #d1c5ff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .18em;
+  line-height: 1.5;
+}
+.nfc-turab-page .nfc-status-dot {
+  display: inline-block;
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #55edd7;
+  box-shadow: 0 0 15px #55edd7;
+}
+.nfc-turab-page .nfc-hero-separator { opacity: .45; }
+.nfc-turab-page .nfc-hero #avatar {
+  display: block;
+  margin: 33px auto 19px;
+  width: 128px;
+  height: 128px;
+  object-fit: contain !important;
+  border-radius: 28px;
+  padding: 13px;
+  box-sizing: border-box;
+  background: rgba(9, 12, 26, .66);
+  border: 1px solid rgba(148, 143, 224, .32);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, .3), 0 0 28px rgba(138, 96, 240, .16);
+}
+.nfc-turab-page .nfc-hero h1 {
+  margin: 0;
+  color: #fff !important;
+  font-size: clamp(38px, 7vw, 58px);
+  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: -.045em;
+}
+.nfc-turab-page .nfc-hero h1 .badge { margin-left: 10px; vertical-align: baseline; }
+.nfc-turab-page .nfc-hero .description-parent { padding: 0; }
+.nfc-turab-page .nfc-hero .description-parent:has(p:empty) { display: none; }
+.nfc-turab-page .nfc-hero .description-parent p {
+  width: auto !important;
+  margin: 12px auto 0;
+  color: #cdd0e5 !important;
+  font-size: 15px;
+  line-height: 1.6;
+}
+.nfc-turab-page .nfc-hero-caption {
+  width: auto !important;
+  margin: 15px 0 0;
+  color: #b6bbd7;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: .01em;
+}
+.nfc-turab-page .nfc-hero-line {
+  width: 46px;
+  height: 3px;
+  border-radius: 4px;
+  margin: 28px auto 0;
+  background: linear-gradient(90deg, #a67bff, #53e5d8);
+}
+.nfc-turab-page .sharediv { padding: 20px 24px 0; }
+.nfc-turab-page .sharebutton {
+  border: 1px solid rgba(185, 171, 250, .5) !important;
+  border-radius: 14px !important;
+  background: rgba(27, 30, 59, .87) !important;
+  color: #f1eaff !important;
+  box-shadow: 0 8px 26px rgba(0, 0, 0, .2);
+}
+.nfc-turab-page .sharebutton .sharebutton-img { color: #c5aaff !important; }
+.nfc-turab-page .sharebutton:hover { border-color: #ab91ff !important; background: #292749 !important; }
+.nfc-turab-page .footer { margin: 0 0 35px !important; line-height: 2.2; }
+.nfc-turab-page .footer a {
+  display: inline-block;
+  color: #cdd2ee !important;
+  font-size: 13px;
+  text-decoration: none;
+  transition: color .2s ease;
+}
+.nfc-turab-page .footer a:hover,
+.nfc-turab-page .footer a:focus-visible { color: #76f2e4 !important; text-decoration: underline; }
+@media (max-width: 540px) {
+  .nfc-turab-page > .container { padding: 0 14px; }
+  .nfc-turab-page .nfc-hero { margin: 54px auto 34px; padding: 35px 18px 40px; border-radius: 24px; }
+  .nfc-turab-page .nfc-hero-top { font-size: 9px; letter-spacing: .10em; gap: 7px; }
+  .nfc-turab-page .sharediv { padding: 13px 14px 0; }
+  .nfc-turab-page .footer a { padding: 0 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nfc-turab-page .nfc-hero *, .nfc-turab-page .footer a { animation: none !important; transition: none !important; }
+}
