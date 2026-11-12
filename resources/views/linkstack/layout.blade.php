@@ -4,7 +4,7 @@
    @stack('linkstack-head')
    @stack('linkstack-head-end')
    @if(isset($userinfo) && $userinfo->littlelink_name === 'turab')
-      <link rel="stylesheet" href="{{ asset('assets/linkstack/css/nfc-turab.css') }}">
+      <link rel="stylesheet" href="{{ asset('assets/linkstack/css/nfc-turab.css') }}?v=2">
    @endif
 </head>
 <body @if(isset($userinfo) && $userinfo->littlelink_name === 'turab')class="nfc-turab-page"@endif>

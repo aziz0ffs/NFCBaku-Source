@@ -28,7 +28,11 @@
             @include('linkstack.elements.heading')
             @include('linkstack.elements.bio')
             @if($userinfo->littlelink_name === 'turab')
-                    <p class="nfc-hero-caption">Bir toxunuşla paylaş.</p>
+                    <div class="nfc-hero-copy" aria-label="NFC Baku haqqında">
+                        <p><span aria-hidden="true">📲</span> Tək bir toxunuşla tanış ol və əlaqədə qal!</p>
+                        <p><span aria-hidden="true">🔗</span> Nömrə, sosial media və portfolion cibində.</p>
+                        <p><span aria-hidden="true">📍</span> Baku, Azerbaijan</p>
+                    </div>
                     <div class="nfc-hero-line" aria-hidden="true"></div>
                 </section>
             @endif
