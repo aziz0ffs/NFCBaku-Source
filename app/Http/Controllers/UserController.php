@@ -874,6 +874,8 @@ class UserController extends Controller
 
     if($id == Auth::id() and $id != "1") {
 
+        // Remove any admin impersonation reference before deleting this account.
+        User::where('auth_as', $id)->update(['auth_as' => null, 'remember_token' => null]);
         Link::where('user_id', $id)->delete();
 
         $user = User::find($id);

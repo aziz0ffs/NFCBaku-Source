@@ -248,6 +248,8 @@ class AdminController extends Controller
   {
     $id = $request->id;
 
+    // A deleted account must not remain an admin's impersonation target.
+    User::where('auth_as', $id)->update(['auth_as' => null, 'remember_token' => null]);
     Link::where("user_id", $id)->delete();
 
     Schema::disableForeignKeyConstraints();
@@ -265,6 +267,8 @@ class AdminController extends Controller
   {
     $id = $request->id;
 
+    // A deleted account must not remain an admin's impersonation target.
+    User::where('auth_as', $id)->update(['auth_as' => null, 'remember_token' => null]);
     Link::where("user_id", $id)->delete();
 
     Schema::disableForeignKeyConstraints();

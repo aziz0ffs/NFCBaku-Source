@@ -22,6 +22,16 @@ class Impersonate
             $originalUserId = $adminUser->id;
             $impersonateUserId = is_numeric($adminUser->auth_as) ? $adminUser->auth_as : $adminUser->id;
             $impersonateUser = User::find($impersonateUserId);
+            if (!$impersonateUser) {
+                // The impersonated account may have been deleted in another session.
+                $cleared = User::whereKey($originalUserId)
+                    ->where('auth_as', $impersonateUserId)
+                    ->update(['auth_as' => null, 'remember_token' => null]);
+                if ($cleared) {
+                    $request->session()->forget('display_auth_nav');
+                }
+                return $next($request);
+            }
             $impersonateUserName = $impersonateUser->name;
 
             if (Auth::user()->id === $originalUserId) {
