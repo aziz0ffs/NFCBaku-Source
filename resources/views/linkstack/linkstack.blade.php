@@ -19,6 +19,9 @@
     @endpush
 
     @push('linkstack-content')
+        @if(in_array($userinfo->id, [960487, 960488], true) && in_array($userinfo->littlelink_name, ['turab-noir', 'turab-rose'], true))
+            @include('linkstack.variants.turab-campaign')
+        @else
         @foreach($information as $info)
             @if($userinfo->littlelink_name === 'turab')
                 <section class="nfc-hero" aria-label="Turab profili">
@@ -39,6 +42,7 @@
         @endforeach
         @include('linkstack.elements.icons')
         @include('linkstack.elements.buttons')
+        @endif
         @yield('content')
         @include('linkstack.modules.footer')
     @endpush
