@@ -99,7 +99,11 @@ class UserController extends Controller
         $userinfo = User::select('id', 'name', 'littlelink_name', 'littlelink_description', 'theme', 'role', 'block')->where('id', $id)->first();
         $information = User::select('name', 'littlelink_name', 'littlelink_description', 'theme')->where('id', $id)->get();
         
-        if ($userinfo->block == 'yes') {
+        // Explicitly published, login-blocked demo accounts may have a public profile.
+        // Existing blocked users remain private; administrative accounts never qualify.
+        $publicDemo = $userinfo->role === 'user'
+            && UserData::getData($userinfo->id, 'public-demo') === true;
+        if ($userinfo->block == 'yes' && !$publicDemo) {
             return abort(404);
         }
         
@@ -125,7 +129,8 @@ class UserController extends Controller
             }
         }
 
-        return view('linkstack.linkstack', ['userinfo' => $userinfo, 'information' => $information, 'links' => $links, 'littlelink_name' => $littlelink_name]);
+        $profileView = $userinfo->theme === 'identity' ? 'linkstack.identity' : 'linkstack.linkstack';
+        return view($profileView, ['userinfo' => $userinfo, 'information' => $information, 'links' => $links, 'littlelink_name' => $littlelink_name]);
     }
 
     //Show littlelink page as home page if set in config
@@ -163,7 +168,8 @@ class UserController extends Controller
             }
         }
 
-        return view('linkstack.linkstack', ['userinfo' => $userinfo, 'information' => $information, 'links' => $links, 'littlelink_name' => $littlelink_name]);
+        $profileView = $userinfo->theme === 'identity' ? 'linkstack.identity' : 'linkstack.linkstack';
+        return view($profileView, ['userinfo' => $userinfo, 'information' => $information, 'links' => $links, 'littlelink_name' => $littlelink_name]);
     }
 
     //Redirect to user page
